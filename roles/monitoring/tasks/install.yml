@@ -53,6 +53,34 @@
   become: true
   when: monitoring_enable_setup | bool
 
+- name: Install Wazuh prerequisites
+  ansible.builtin.package:
+    name: "{{ monitoring_wazuh_packages }}"
+    state: present
+    update_cache: true
+  become: true
+  when: monitoring_enable_wazuh | bool
+
+- name: Ensure vm.max_map_count is set for the Wazuh indexer
+  ansible.posix.sysctl:
+    name: vm.max_map_count
+    value: "262144"
+    sysctl_set: true
+    state: present
+    reload: true
+  become: true
+  when: monitoring_enable_wazuh | bool
+
+- name: Prepare Wazuh certificates and data directories
+  ansible.builtin.command:
+    cmd: bash scripts/wazuh-setup.sh
+    chdir: "{{ monitoring_repo_dest }}"
+  become: true
+  changed_when: false
+  when:
+    - monitoring_enable_wazuh | bool
+    - monitoring_enable_setup | bool
+
 - name: Start monitoring compose stack
   ansible.builtin.shell: |
     docker compose up -d

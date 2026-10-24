@@ -1,7 +1,7 @@
 ---
 argument_specs:
   main:
-    short_description: Deploy the mps-monitoring stack (Prometheus, Loki, Grafana)
+    short_description: Deploy the mps-monitoring stack (Prometheus, Loki, Grafana, optional Wazuh SIEM)
     description:
       - Clones the mps-monitoring repo, renders its .env from variables,
         materializes the gitignored service config files from their .example
@@ -19,6 +19,11 @@ argument_specs:
         required: false
         default: true
         description: "Run the repo's setup.sh to create and chown the data directories"
+      monitoring_enable_wazuh:
+        type: bool
+        required: false
+        default: false
+        description: "Start the Wazuh SIEM containers via the wazuh compose profile (opt-in; adds roughly 3 GB of RAM)"
       monitoring_packages:
         type: list
         required: false
@@ -84,6 +89,72 @@ argument_specs:
         required: false
         default: 13.0.2
         description: "Grafana image tag"
+      monitoring_wazuh_version:
+        type: str
+        required: false
+        default: "5.0.0-beta5"
+        description: "Wazuh image tag (manager, indexer, dashboard)"
+      monitoring_wazuh_packages:
+        type: list
+        required: false
+        elements: str
+        default: [openssl]
+        description: "Packages required by the Wazuh setup script (vendored certificate tool)"
+      monitoring_wazuh_indexer_heap_gb:
+        type: int
+        required: false
+        default: 1
+        description: "JVM heap size in GB for the Wazuh indexer (uses -Xms/-Xmx)"
+      monitoring_wazuh_agent_port:
+        type: int
+        required: false
+        default: 1514
+        description: "Host port for Wazuh agent event traffic (TCP)"
+      monitoring_wazuh_enrollment_port:
+        type: int
+        required: false
+        default: 1515
+        description: "Host port for Wazuh agent enrollment (TCP)"
+      monitoring_wazuh_tls_port:
+        type: int
+        required: false
+        default: 1517
+        description: "Host port for the Wazuh manager TLS agent listener (TCP)"
+      monitoring_wazuh_syslog_port:
+        type: int
+        required: false
+        default: 514
+        description: "Host port for Wazuh syslog ingestion (UDP)"
+      monitoring_wazuh_api_port:
+        type: int
+        required: false
+        default: 55000
+        description: "Host port for the Wazuh manager API (TCP)"
+      monitoring_wazuh_dashboard_port:
+        type: int
+        required: false
+        default: 443
+        description: "Host port for the Wazuh dashboard https UI"
+      monitoring_wazuh_manager_indexer_user:
+        type: str
+        required: false
+        default: wazuh-manager
+        description: "Indexer user the Wazuh manager authenticates with (must exist in the indexer's user database)"
+      monitoring_wazuh_manager_indexer_password:
+        type: str
+        required: false
+        default: wazuh-manager
+        description: "Password for the Wazuh manager's indexer user"
+      monitoring_wazuh_dashboard_user:
+        type: str
+        required: false
+        default: kibanaserver
+        description: "Indexer user the Wazuh dashboard authenticates with"
+      monitoring_wazuh_dashboard_password:
+        type: str
+        required: false
+        default: kibanaserver
+        description: "Password for the Wazuh dashboard's indexer user"
       monitoring_config_files:
         type: list
         required: false
