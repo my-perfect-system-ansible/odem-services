@@ -56,7 +56,7 @@ Docker and Docker Compose must already be present on the host
 
 ## Dependencies
 
-- `odem.users.user`
+- `odem.os.user`
 
 ## Example usage
 

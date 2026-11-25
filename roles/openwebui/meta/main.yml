@@ -20,4 +20,4 @@ galaxy_info:
     - kokoro
     - odem-services
 dependencies:
-  - role: odem.users.user
+  - role: odem.os.user

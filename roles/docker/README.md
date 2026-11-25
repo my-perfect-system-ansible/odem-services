@@ -38,7 +38,7 @@ configurable via `docker_storage_driver` and `docker_data_root`.
 
 ## Dependencies
 
-- `odem.users.user`
+- `odem.os.user`
 
 ## Example usage
 

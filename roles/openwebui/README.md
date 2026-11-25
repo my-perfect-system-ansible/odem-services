@@ -57,7 +57,7 @@ for the full list.
 
 ## Dependencies
 
-- `odem.users.user`
+- `odem.os.user`
 
 ## Example usage
 
