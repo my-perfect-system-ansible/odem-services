@@ -36,7 +36,7 @@ argument_specs:
       openwebui_repo_dest:
         type: str
         required: false
-        description: "Directory the ailab-web repo is cloned into; defaults to identity_default_repo_dir/github/al-readytaken/ailab-web (see defaults/main.yml)"
+        description: "Directory the ailab-web repo is cloned into; defaults to user_default_repo_dir/github/al-readytaken/ailab-web (see defaults/main.yml)"
       openwebui_common_dir:
         type: str
         required: false

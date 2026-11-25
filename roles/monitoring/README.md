@@ -30,7 +30,7 @@ Docker and Docker Compose must already be present on the host
 | `monitoring_enable_wazuh` | `false` | Start the Wazuh SIEM containers via the `wazuh` compose profile |
 | `monitoring_repo_url` | `https://github.com/my-perfect-system/mps-monitoring.git` | Git URL for the mps-monitoring repo |
 | `monitoring_repo_version` | `main` | Git ref to check out |
-| `monitoring_repo_dest` | `{{ identity_default_repo_dir }}/mps-monitoring` | Clone destination |
+| `monitoring_repo_dest` | `{{ user_default_repo_dir }}/mps-monitoring` | Clone destination |
 | `monitoring_bind_ip` | `127.0.0.1` | Host IP the service ports bind to |
 | `monitoring_grafana_port` | `3000` | Host port for Grafana |
 | `monitoring_prometheus_port` | `9090` | Host port for Prometheus |
@@ -56,7 +56,7 @@ Docker and Docker Compose must already be present on the host
 
 ## Dependencies
 
-- `odem.base.identity`
+- `odem.users.user`
 
 ## Example usage
 

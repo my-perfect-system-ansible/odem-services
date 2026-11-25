@@ -38,18 +38,18 @@
   ansible.builtin.file:
     path: "{{ docker_data_root }}"
     state: directory
-    owner: "{{ identity_default_owner }}"
+    owner: "{{ user_default_owner }}"
     group: "docker"
-    mode: "{{ identity_default_suid_mode }}"
+    mode: "{{ user_default_suid_mode }}"
   become: true
 
 - name: Ensure docker data tmp directory exists
   ansible.builtin.file:
     path: "{{ docker_data_root }}/tmp"
     state: directory
-    owner: "{{ identity_default_owner }}"
+    owner: "{{ user_default_owner }}"
     group: "docker"
-    mode: "{{ identity_default_suid_mode }}"
+    mode: "{{ user_default_suid_mode }}"
   become: true
 
 - name: Configure docker daemon
