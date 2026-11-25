@@ -1,9 +1,9 @@
 ---
 argument_specs:
   main:
-    short_description: Deploy OpenVPN server from the mps-openvpn config repo
+    short_description: Deploy OpenVPN server from the mps-services-openvpn config repo
     description:
-      - Clones the mps-openvpn repo, renders its .env from variables,
+      - Clones the mps-services-openvpn repo, renders its .env from variables,
         generates the PKI and a single TAP network, and starts the server
         via docker compose.
       - Docker and Docker Compose must already be present on the host.
@@ -29,8 +29,8 @@ argument_specs:
       openvpn_repo_url:
         type: str
         required: false
-        default: "https://github.com/my-perfect-system/mps-openvpn.git"
-        description: "Git URL for the mps-openvpn repo"
+        default: "https://github.com/my-perfect-system/mps-services-openvpn.git"
+        description: "Git URL for the mps-services-openvpn repo"
       openvpn_repo_version:
         type: str
         required: false
@@ -39,7 +39,7 @@ argument_specs:
       openvpn_repo_dest:
         type: str
         required: false
-        description: "Directory the mps-openvpn repo is cloned into; defaults to user_default_repo_dir/mps-openvpn (see defaults/main.yml)"
+        description: "Directory the mps-services-openvpn repo is cloned into; defaults to user_default_repo_dir/mps-services-openvpn (see defaults/main.yml)"
       openvpn_server_address:
         type: str
         required: false

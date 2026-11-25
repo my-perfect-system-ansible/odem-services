@@ -1,5 +1,5 @@
 ---
-- name: Clone mps-openvpn repository
+- name: Clone mps-services-openvpn repository
   ansible.builtin.git:
     repo: "{{ openvpn_repo_url }}"
     dest: "{{ openvpn_repo_dest }}"

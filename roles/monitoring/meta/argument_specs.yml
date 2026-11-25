@@ -1,9 +1,9 @@
 ---
 argument_specs:
   main:
-    short_description: Deploy the mps-monitoring stack (Prometheus, Loki, Grafana, optional Wazuh SIEM)
+    short_description: Deploy the mps-services-monitoring stack (Prometheus, Loki, Grafana, optional Wazuh SIEM)
     description:
-      - Clones the mps-monitoring repo, renders its .env from variables,
+      - Clones the mps-services-monitoring repo, renders its .env from variables,
         materializes the gitignored service config files from their .example
         siblings, runs the repo's setup.sh to prepare the bind-mounted data
         directories, and starts the stack via docker compose.
@@ -33,8 +33,8 @@ argument_specs:
       monitoring_repo_url:
         type: str
         required: false
-        default: "https://github.com/my-perfect-system/mps-monitoring.git"
-        description: "Git URL for the mps-monitoring repo"
+        default: "https://github.com/my-perfect-system/mps-services-monitoring.git"
+        description: "Git URL for the mps-services-monitoring repo"
       monitoring_repo_version:
         type: str
         required: false
@@ -43,7 +43,7 @@ argument_specs:
       monitoring_repo_dest:
         type: str
         required: false
-        description: "Directory the mps-monitoring repo is cloned into; defaults to user_default_repo_dir/mps-monitoring (see defaults/main.yml)"
+        description: "Directory the mps-services-monitoring repo is cloned into; defaults to user_default_repo_dir/mps-services-monitoring (see defaults/main.yml)"
       monitoring_bind_ip:
         type: str
         required: false

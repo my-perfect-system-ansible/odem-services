@@ -7,7 +7,7 @@
     update_cache: true
   become: true
 
-- name: Clone mps-monitoring repository
+- name: Clone mps-services-monitoring repository
   ansible.builtin.git:
     repo: "{{ monitoring_repo_url }}"
     dest: "{{ monitoring_repo_dest }}"

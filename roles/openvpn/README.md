@@ -6,7 +6,7 @@ role: openvpn
 
 # `odem.services.openvpn`
 
-Deploy an OpenVPN server from the `mps-openvpn` config repo — clone the
+Deploy an OpenVPN server from the `mps-services-openvpn` config repo — clone the
 repo, render its `.env`, generate the PKI and a single TAP network, and
 start the server container via docker compose.
 
@@ -19,9 +19,9 @@ dedicated docker role runs in advance).
 |---|---|---|
 | `openvpn_enable_service` | `true` | Bring the compose services up at the end of the run |
 | `openvpn_enable_regenerate` | `false` | Force a PKI rebuild (destroys the existing CA and all certs) |
-| `openvpn_repo_url` | `https://github.com/my-perfect-system/mps-openvpn.git` | Git URL for the mps-openvpn repo |
+| `openvpn_repo_url` | `https://github.com/my-perfect-system/mps-services-openvpn.git` | Git URL for the mps-services-openvpn repo |
 | `openvpn_repo_version` | `main` | Git ref to check out |
-| `openvpn_repo_dest` | `{{ user_default_repo_dir }}/mps-openvpn` | Clone destination (derived from the `user_default_repo_dir` global in `odem.os.user`) |
+| `openvpn_repo_dest` | `{{ user_default_repo_dir }}/mps-services-openvpn` | Clone destination (derived from the `user_default_repo_dir` global in `odem.os.user`) |
 | `openvpn_server_address` | `server` | `SERVER_ADDRESS` in `.env` (remote address in `.ovpn` files) |
 | `openvpn_network_name` | `example-tap` | Network name (also the server certificate CN) |
 | `openvpn_network_mode` | `tap` | Network mode (`tap` or `tun`) |

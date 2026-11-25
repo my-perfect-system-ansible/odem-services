@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: foo <bar@baz.com>
-  description: "Deploy the mps-monitoring stack (Prometheus, Loki, Grafana, optional Wazuh SIEM) via docker compose"
+  description: "Deploy the mps-services-monitoring stack (Prometheus, Loki, Grafana, optional Wazuh SIEM) via docker compose"
   min_ansible_version: "2.16.0"
   license: GPL-3.0-or-later
   platforms:

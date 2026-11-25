@@ -1,14 +1,14 @@
 # `odem.services` Ansible Collection
 
 Service deployment and configuration for Debian 13 — e.g. OpenVPN
-server configuration managed from the `mps-openvpn` config repo.
+server configuration managed from the `mps-services-openvpn` config repo.
 
 ## Galaxy metadata
 
 - **namespace**: `odem`
 - **name**: `services`
-- **version**: `0.4.2`
-- **dependencies**: `odem.base`, `ansible.posix`
+- **version**: `0.4.3`
+- **dependencies**: `odem.os`, `ansible.posix`, `community.docker`
 
 See [`galaxy.yml`](galaxy.yml) for the canonical values.
 
@@ -17,8 +17,8 @@ See [`galaxy.yml`](galaxy.yml) for the canonical values.
 | Role | Purpose |
 |---|---|
 | [`odem.services.docker`](roles/docker/README.md) | Install the latest Docker Engine from the official Docker apt repository. |
-| [`odem.services.openvpn`](roles/openvpn/README.md) | Deploy an OpenVPN server from the `mps-openvpn` config repo (clone, `.env` render, PKI + TAP network generation, docker compose up). |
-| [`odem.services.monitoring`](roles/monitoring/README.md) | Deploy the `mps-monitoring` stack (Prometheus, Loki, Grafana) via docker compose. |
+| [`odem.services.openvpn`](roles/openvpn/README.md) | Deploy an OpenVPN server from the `mps-services-openvpn` config repo (clone, `.env` render, PKI + TAP network generation, docker compose up). |
+| [`odem.services.monitoring`](roles/monitoring/README.md) | Deploy the `mps-services-monitoring` stack (Prometheus, Loki, Grafana) via docker compose. |
 | [`odem.services.openwebui`](roles/openwebui/README.md) | Deploy the `ailab-web` stack (Open WebUI, SWAG, Kokoro) via docker compose. |
 
 ## Installation

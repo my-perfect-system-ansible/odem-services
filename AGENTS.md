@@ -1,7 +1,7 @@
 # AGENTS.md — odem-services
 
 Service deployment and configuration — system-level service roles
-(e.g. OpenVPN server configuration sourced from the `mps-openvpn`
+(e.g. OpenVPN server configuration sourced from the `mps-services-openvpn`
 config repo).
 
 ## Galaxy
@@ -9,15 +9,15 @@ config repo).
 - **namespace**: `odem`
 - **name**: `services`
 - **version**: `0.4.3`
-- **dependencies**: `odem.base >=0.1.0`, `ansible.posix >=1.0.0`
+- **dependencies**: `odem.os >=0.1.0`, `ansible.posix >=1.0.0`, `community.docker`
 
 ## Roles
 
 | Role | Description | Complexity |
 |---|---|---|
 | `odem.services.docker` | Install latest Docker Engine from the official Docker apt repo (GPG key + `stable` repo + docker-ce + compose/buildx plugins), render `/etc/docker/daemon.json` (storage driver + data root), and notify `Restart docker` on change so a data-root switch fully applies. | 1 |
-| `odem.services.openvpn` | Clone `mps-openvpn`, render `.env`, generate PKI + a single TAP network (stat-gated), render an own `docker-compose.yml` (server-only, port-driven), `docker compose up`. Requires `odem.services.docker`. | 2 |
-| `odem.services.monitoring` | Clone `mps-monitoring`, render `.env`, materialize gitignored config files from `.example` twins, run `setup.sh`, `docker compose up` the Prometheus/Loki/Grafana stack. Optional Wazuh SIEM (`5.0.0-beta5` images) via `monitoring_enable_wazuh` (compose profile `wazuh`): runs `scripts/wazuh-setup.sh` (vendored cert tool → TLS certificates, plus `vm.max_map_count`), credentials via env vars, state in Docker named volumes. Requires `odem.services.docker`. | 2 |
+| `odem.services.openvpn` | Clone `mps-services-openvpn`, render `.env`, generate PKI + a single TAP network (stat-gated), render an own `docker-compose.yml` (server-only, port-driven), `docker compose up`. Requires `odem.services.docker`. | 2 |
+| `odem.services.monitoring` | Clone `mps-services-monitoring`, render `.env`, materialize gitignored config files from `.example` twins, run `setup.sh`, `docker compose up` the Prometheus/Loki/Grafana stack. Optional Wazuh SIEM (`5.0.0-beta5` images) via `monitoring_enable_wazuh` (compose profile `wazuh`): runs `scripts/wazuh-setup.sh` (vendored cert tool → TLS certificates, plus `vm.max_map_count`), credentials via env vars, state in Docker named volumes. Requires `odem.services.docker`. | 2 |
 | `odem.services.openwebui` | Clone `ailab-web` over SSH, render root + per-service `.env` (openwebui/swag/kokoro), install `python3-requests` (via `openwebui_packages`), materialize `common/ssh/authorized_keys`, `docker compose up` the Open WebUI/SWAG/Kokoro stack. Requires `odem.services.docker` and the `ailab-localai_ailab-local` Docker network. | 2 |
 
 ## Conventions
