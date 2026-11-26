@@ -1,0 +1,16 @@
+---
+# Fragment for the lazy identity guard refactor (2026-11-26).
+# Compiles into changelogs/changelog.yaml at release time.
+removed_features:
+  - |
+    All 4 roles (`docker`, `monitoring`, `openvpn`, `openwebui`) no longer
+    meta-depend on `odem.os.user`. Each resolves the identity facts lazily via
+    a first-task `include_role {name: odem.os.user, tasks_from: identity.yml,
+    public: true}` guard instead; account management only runs where
+    `odem.os.user` is applied explicitly (e.g. the bootstrap playbook).
+    Standalone role application no longer creates or touches user accounts.
+  - |
+    The consuming roles mirror the canonical `user_default_repo_dir(_mps)`
+    values in their own `defaults/main.yml` so argument-spec validation can
+    render the templated defaults before any task (inventory overrides still
+    win; task-time values are unchanged).
