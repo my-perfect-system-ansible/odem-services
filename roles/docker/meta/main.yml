@@ -16,5 +16,4 @@ galaxy_info:
     - docker
     - containers
     - odem-services
-dependencies:
-  - role: odem.os.user
+dependencies: []

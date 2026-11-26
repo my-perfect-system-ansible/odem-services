@@ -17,5 +17,4 @@ galaxy_info:
     - vpn
     - network
     - odem-services
-dependencies:
-  - role: odem.os.user
+dependencies: []

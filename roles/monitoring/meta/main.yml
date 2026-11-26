@@ -20,5 +20,4 @@ galaxy_info:
     - wazuh
     - siem
     - odem-services
-dependencies:
-  - role: odem.os.user
+dependencies: []

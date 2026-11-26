@@ -19,5 +19,4 @@ galaxy_info:
     - swag
     - kokoro
     - odem-services
-dependencies:
-  - role: odem.os.user
+dependencies: []
